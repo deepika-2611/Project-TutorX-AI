@@ -1,0 +1,12 @@
+.git
+.env
+deployment/.env
+node_modules
+dist
+dist-react
+npm-debug.log
+README.md
+docs
+tests
+.codex
+.agents

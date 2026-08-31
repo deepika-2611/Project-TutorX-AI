@@ -1,0 +1,35 @@
+services:
+  app:
+    image: ${APP_IMAGE:?APP_IMAGE is required}
+    container_name: tutorx-ai
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      PORT: ${PORT:-8787}
+      DATABASE_URL: ${DATABASE_URL}
+      PGSSL: ${PGSSL:-true}
+      LLM_PROVIDER: ${LLM_PROVIDER:-deepseek}
+      MATH_BOOK_PDF: ${MATH_BOOK_PDF:-/app/data/textbooks/Class_10_Mathematics_English_2025_Edition-www.tntextbooks.in.pdf}
+    expose:
+      - "8787"
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: tutorx-caddy
+    restart: unless-stopped
+    depends_on:
+      - app
+    environment:
+      DOMAIN: ${DOMAIN}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

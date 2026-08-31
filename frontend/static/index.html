@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TutorX AI | AI-Powered Learning Platform</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="TutorX AI helps Class 10 students learn with personalized AI tutoring, syllabus-based practice, assessments, bilingual support, and progress tracking.">
+  <meta name="keywords" content="TutorX AI, AI learning platform, Samacheer Kalvi, Tamil Nadu State Board, Class 10, AI tutor, student learning, practice tests, progress tracking">
+  <meta property="og:title" content="TutorX AI | AI-Powered Learning Platform">
+  <meta property="og:description" content="Personalized AI tutoring, syllabus-based practice, assessments, bilingual support, and progress tracking for Class 10 students.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="TutorX AI | AI-Powered Learning Platform">
+  <meta name="twitter:description" content="Learn smarter with AI tutoring, practice tests, assessments, and progress tracking for Class 10 and future multi-subject learning.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body class="dark-theme">
+  <!-- LANDING PAGE -->
+  <section class="landing-screen" id="landing-screen">
+    <header class="landing-nav">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">TutorX <span class="brand-highlight">AI</span></span>
+          <span class="brand-subtitle">Class 10 Math Tutor</span>
+        </div>
+      </div>
+      <div class="landing-nav-actions">
+        <button class="secondary-btn" id="landing-login-btn" type="button">Login</button>
+        <button class="primary-btn" id="landing-register-btn" type="button">Get Started</button>
+      </div>
+    </header>
+
+    <main class="landing-main">
+      <section class="landing-hero">
+        <div class="landing-hero-content">
+          <p class="landing-eyebrow">Tamil Nadu State Board | Samacheer Kalvi</p>
+          <h1>TutorX AI</h1>
+          <p class="landing-lead">A focused AI mathematics tutor for Class 10 students, built for syllabus learning, doubt clearing, mastery tests, notes, and progress tracking.</p>
+          <div class="landing-actions">
+            <button class="primary-btn" id="landing-primary-cta" type="button">Start Learning</button>
+            <button class="secondary-btn" id="landing-secondary-cta" type="button">Student Login</button>
+          </div>
+        </div>
+        <div class="landing-insight-panel" aria-label="TutorX AI highlights">
+          <div>
+            <span>Learn</span>
+            <p>Follow each Class 10 math chapter at your own pace.</p>
+          </div>
+          <div>
+            <span>Ask</span>
+            <p>Clear doubts with simple step-by-step explanations.</p>
+          </div>
+          <div>
+            <span>Improve</span>
+            <p>Use tests and weak-area feedback to plan revision.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="landing-feature-band" aria-label="Application highlights">
+        <article>
+          <span>01</span>
+          <h2>Personal Math Tutor</h2>
+          <p>Students ask chapter doubts and receive simple, guided explanations aligned to Class 10 mathematics.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h2>Mastery Testing</h2>
+          <p>Topic tests measure concept application, numerical solving, formulas, weak areas, and recommended practice.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h2>Progress Memory</h2>
+          <p>Completed lessons, assessment results, notes, credits, and dashboard metrics stay student-specific.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h2>Exam Ready Routine</h2>
+          <p>Study, ask, practise, review, and repeat with a calm daily flow designed for Class 10 preparation.</p>
+        </article>
+      </section>
+    </main>
+  </section>
+
+  <!-- LOGIN / REGISTRATION MODULE -->
+  <section class="auth-screen" id="auth-screen" hidden>
+    <div class="auth-panel">
+      <div class="auth-brand">
+        <div class="brand-logo">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+        </div>
+        <div>
+          <h1>TutorX AI</h1>
+          <p>Student account access</p>
+        </div>
+      </div>
+
+      <div class="auth-tabs" role="tablist">
+        <button class="auth-tab active" id="show-login" type="button">Login</button>
+        <button class="auth-tab" id="show-register" type="button">Register</button>
+      </div>
+
+      <form class="auth-form active" id="login-form">
+        <div class="form-group">
+          <label for="login-username">Email</label>
+          <input class="form-control" id="login-username" autocomplete="username" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input class="form-control" id="login-password" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="primary-btn full-btn" type="submit">Login</button>
+      </form>
+
+      <form class="auth-form" id="register-form">
+        <div class="form-group">
+          <label for="register-name">Student Name</label>
+          <input class="form-control" id="register-name" autocomplete="name" required>
+        </div>
+        <div class="auth-grid">
+          <div class="form-group">
+            <label for="register-email">Email</label>
+            <input class="form-control" id="register-email" type="email" autocomplete="email" required>
+          </div>
+          <div class="form-group">
+            <label for="register-dob">Date of Birth</label>
+            <input class="form-control" id="register-dob" type="date" autocomplete="bday" required>
+          </div>
+        </div>
+        <div class="auth-grid">
+          <div class="form-group">
+            <label for="register-gender">Gender</label>
+            <select class="form-control" id="register-gender" required>
+              <option value="">Select gender</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="non_binary">Non-binary</option>
+              <option value="prefer_not_to_say">Prefer not to say</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="register-password">Password</label>
+            <input class="form-control" id="register-password" type="password" autocomplete="new-password" minlength="8" required>
+          </div>
+        </div>
+        <p class="help-text">Use 8+ characters with uppercase, lowercase, and a number.</p>
+        <button class="primary-btn full-btn" type="submit">Create Student Account</button>
+      </form>
+
+      <p class="auth-message" id="auth-message"></p>
+    </div>
+  </section>
+
+  <!-- Layout Wrapper -->
+  <div class="app-container" id="app-container" style="display: none;">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="app-sidebar">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">TutorX <span class="brand-highlight">AI</span></span>
+          <span class="brand-subtitle">Learning Platform</span>
+        </div>
+      </div>
+      
+      <!-- Student Mini Profile -->
+      <div class="user-profile-summary">
+        <div class="avatar" id="student-avatar">T</div>
+        <div class="user-info">
+          <div class="user-name" id="student-name-label">TN Student</div>
+          <div class="user-level-badge" id="student-level-label">Level 1 Scholar</div>
+        </div>
+      </div>
+      
+      <!-- Nav Menu -->
+      <nav class="nav-menu">
+        <button class="nav-item active" data-view="dashboard" id="nav-dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          <span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-view="tutor" id="nav-tutor">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/></svg>
+          <span>AI Tutor Room</span>
+        </button>
+        <button class="nav-item" data-view="assessment" id="nav-assessment">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span>Mastery Tests</span>
+        </button>
+        <button class="nav-item" data-view="glossary" id="nav-glossary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8h.01"/><path d="M10 12h2v4h2"/></svg>
+          <span>Bilingual Aid</span>
+        </button>
+      </nav>
+      
+      <!-- Settings & Controls -->
+      <div class="sidebar-footer">
+        <button class="footer-btn" id="theme-toggle" title="Toggle Theme">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <span>Toggle Light</span>
+        </button>
+        
+        <button class="footer-btn" id="logout-btn" title="Logout">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top header bar -->
+      <header class="top-header">
+        <div class="view-title-container">
+          <h1 id="current-view-title">Dashboard</h1>
+          <p id="current-view-subtitle">Welcome back, Scholar! Ready to master your curriculum?</p>
+        </div>
+        
+        <!-- Score and Streaks Panel -->
+        <div class="user-stats-bar">
+          <div class="stat-pill" title="Daily Streak">
+            <span class="stat-icon">🔥</span>
+            <span class="stat-value" id="stat-streak">5 Days</span>
+          </div>
+          <div class="stat-pill" title="Total XP Points">
+            <span class="stat-icon">✨</span>
+            <span class="stat-value" id="stat-xp">850 XP</span>
+          </div>
+          <div class="stat-pill select-pill">
+            <select id="curriculum-medium-select" class="clean-select">
+              <option value="english">English Medium</option>
+              <option value="tamil">தமிழ் வழி (Tamil Medium)</option>
+            </select>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Views Container -->
+      <div class="view-panel-container">
+        
+        <!-- VIEW: DASHBOARD -->
+        <section id="view-dashboard" class="view-panel active">
+          <div class="dashboard-grid">
+            <!-- Left Panel: Profile and Analytics -->
+            <div class="grid-col-8">
+              <!-- Welcome Hero Card -->
+              <div class="hero-card">
+                <div class="hero-content">
+                  <h2>Master Class 10 Mathematics</h2>
+                  <p>Study each Samacheer Kalvi Mathematics chapter, ask doubts, complete quizzes, and watch your progress update from your own saved records.</p>
+                  <button class="primary-btn" onclick="document.getElementById('nav-tutor').click()">
+                    <span>Start Learning Now</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </button>
+                </div>
+                <div class="hero-graphic">
+                  <!-- Custom SVG representing learning/AI -->
+                  <svg width="150" height="150" viewBox="0 0 100 100">
+                    <defs>
+                      <linearGradient id="hero-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="var(--accent-primary)" stop-opacity="0.8"/>
+                        <stop offset="100%" stop-color="var(--accent-secondary)" stop-opacity="0.8"/>
+                      </linearGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="45" fill="url(#hero-grad)" opacity="0.15"/>
+                    <circle cx="50" cy="50" r="30" fill="url(#hero-grad)" opacity="0.3"/>
+                    <path d="M50 30 C35 30, 30 45, 50 65 C70 45, 65 30, 50 30 Z" fill="url(#hero-grad)"/>
+                    <circle cx="50" cy="45" r="5" fill="#fff"/>
+                  </svg>
+                </div>
+              </div>
+              
+              <!-- Curricula Overview (Subject Grid) -->
+              <h3 class="section-title">Mathematics Progress (Samacheer Kalvi Class 10)</h3>
+              <div class="subjects-grid">
+                <div class="subject-card math" id="subject-maths">
+                  <div class="subject-icon">📐</div>
+                  <div class="subject-info">
+                    <h4>Mathematics</h4>
+                    <p class="subject-sub">8 Chapters - Relations, Algebra, Geometry, Trigonometry...</p>
+                    <div class="progress-bar-container">
+                      <div class="progress-bar-fill" style="width: 0%;"></div>
+                    </div>
+                    <div class="subject-footer">
+                      <span>0% Mastered</span>
+                      <span class="xp-badge">0 XP</span>
+                    </div>
+                  </div>
+                </div>
+</div>
+              
+              <!-- Daily Quest & Suggestion -->
+              <div class="daily-quest-card">
+                <div class="quest-header">
+                  <span class="quest-badge">Daily Challenge</span>
+                  <span class="quest-reward">+50 XP</span>
+                </div>
+                <h4>Finish one Mathematics lesson and one quiz</h4>
+                <p>Complete a topic in the AI Tutor Room, then take its mastery test. Your dashboard will refresh from your saved student record.</p>
+                <button class="secondary-btn btn-sm" onclick="document.getElementById('nav-tutor').click()">Open Tutor Room</button>
+              </div>
+
+              <div class="stats-card">
+                <h3>Topic-wise Progress</h3>
+                <div class="topic-progress-chart" id="topic-progress-chart"></div>
+              </div>
+
+              <div class="stats-card">
+                <h3>Recent Mathematics Activity</h3>
+                <div class="recent-activity-list" id="recent-activity-list"></div>
+              </div>
+            </div>
+            
+            <!-- Right Panel: Achievements & Stats -->
+            <div class="grid-col-4">
+              <!-- Achievement Tracker Card -->
+              <div class="stats-card">
+                <h3>Syllabus Progress</h3>
+                <div class="circular-progress-wrapper">
+                  <svg viewBox="0 0 100 100" class="circular-chart">
+                    <path class="circle-bg" d="M18 2.0845 a 45.75 45.75 0 1 1 0 91.5 a 45.75 45.75 0 1 1 0 -91.5" />
+                    <path class="circle" id="overall-progress-circle" stroke-dasharray="52, 100" d="M18 2.0845 a 45.75 45.75 0 1 1 0 91.5 a 45.75 45.75 0 1 1 0 -91.5" />
+                    <text x="50" y="55" class="percentage" id="overall-progress-text">52%</text>
+                  </svg>
+                </div>
+                <div class="stats-list">
+                  <div class="stats-item">
+                    <span class="label">Student</span>
+                    <span class="val" id="dashboard-student-name">-</span>
+                  </div>
+                  <div class="stats-item">
+                    <span class="label">Topics Completed</span>
+                    <span class="val" id="stats-topics-count">12 / 31</span>
+                  </div>
+                  <div class="stats-item">
+                    <span class="label">Chapters Completed</span>
+                    <span class="val" id="stats-chapters-completed">0 / 8</span>
+                  </div>
+                  <div class="stats-item">
+                    <span class="label">Chapters Remaining</span>
+                    <span class="val" id="stats-chapters-remaining">8</span>
+                  </div>
+                  <div class="stats-item">
+                    <span class="label">Tutor Sessions</span>
+                    <span class="val" id="stats-tutor-sessions">0</span>
+                  </div>
+                  <div class="stats-item">
+                    <span class="label">Saved Records</span>
+                    <span class="val" id="stats-saved-records">0</span>
+                  </div>
+                  <div class="stats-item">
+                    <span class="label">Quiz Average</span>
+                    <span class="val" id="stats-accuracy-rate">88%</span>
+                  </div>
+                  <div class="stats-item">
+                    <span class="label">Assessments Passed</span>
+                    <span class="val" id="stats-quiz-count">6 Passed</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Badges Card -->
+              <div class="badges-card">
+                <h3>Unlocked Medals</h3>
+                <div class="badges-grid">
+                  <div class="badge-item active" title="Studied 5 consecutive days">
+                    <div class="badge-icon">🔥</div>
+                    <span>5-Day Fire</span>
+                  </div>
+                  <div class="badge-item active" title="Completed the first Mathematics lesson">
+                    <div class="badge-icon">⚡</div>
+                    <span>First Lesson</span>
+                  </div>
+                  <div class="badge-item active" title="Passed 3 Mathematics quizzes">
+                    <div class="badge-icon">⚙️</div>
+                    <span>Quiz Climber</span>
+                  </div>
+                  <div class="badge-item locked" title="Unlock by learning 20 different topics">
+                    <div class="badge-icon">🎓</div>
+                    <span>Syllabus Master</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- VIEW: AI TUTOR ROOM -->
+        <section id="view-tutor" class="view-panel">
+          <div class="tutor-container">
+            <!-- Sidebar: Topic Selection -->
+            <div class="tutor-sidebar">
+              <h3>Subject Syllabus</h3>
+              
+              <!-- Subject Dropdown Selector -->
+              <div class="selector-wrapper">
+                <select id="tutor-subject-select" class="clean-select block-select">
+                  <option value="maths">Class 10 Mathematics</option>
+                </select>
+              </div>
+              
+              <!-- Chapter & Topic Tree -->
+              <div class="topic-list" id="tutor-topic-tree">
+                <!-- Programmatically populated -->
+              </div>
+            </div>
+            
+            <!-- Chat Window Area -->
+            <div class="tutor-chat-area">
+              <!-- Chat Header -->
+              <div class="chat-header">
+                <div class="tutor-avatar">K</div>
+                <div class="tutor-info">
+                  <h4>Tutor Virtual Trainer</h4>
+                  <p id="chat-topic-indicator">Subject: Mathematics - Select a topic to begin</p>
+                </div>
+                <div class="chat-actions">
+                  <button class="border-btn btn-sm" id="reset-conversation">Reset Tutor</button>
+                </div>
+              </div>
+              
+              <!-- Chat Scroll Container -->
+              <div class="chat-messages" id="chat-messages-container">
+                <!-- Initial welcome message -->
+                <div class="message tutor-msg">
+                  <div class="message-content">
+                    <p>வணக்கம்! (Welcome!) I am <strong>Tutor</strong>, your virtual Mathematics trainer for the Tamil Nadu State Board syllabus.</p>
+                    <p>I will guide you step-by-step through Mathematics topics, ask questions to check your understanding, and help you master each chapter.</p>
+                    <p class="tip-text">💡 <strong>Getting Started:</strong> Choose a chapter topic from the left sidebar, ask your doubt, and complete the guided practice.</p>
+                  </div>
+                  <span class="message-time">Just now</span>
+                </div>
+              </div>
+              
+              <!-- Suggested Follow-ups -->
+              <div class="chat-suggestions" id="chat-suggestions-container">
+                <!-- Dynamic suggestions -->
+              </div>
+              
+              <!-- Chat Input Bar -->
+              <div class="chat-input-bar">
+                <textarea id="chat-input-field" placeholder="Ask Tutor to explain a concept or answer a syllabus question..." rows="3"></textarea>
+                <button id="chat-send-btn" class="primary-btn square-btn" title="Send Message">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- VIEW: MASTERY TESTS -->
+        <section id="view-assessment" class="view-panel">
+          <div class="assessment-container">
+            <!-- Sidebar: Choose Quiz -->
+            <div class="assessment-sidebar">
+              <h3>Practice Assessments</h3>
+              <p class="description-text">Test your mastery of specific board units. Complete these to earn XP and level up!</p>
+              
+              <div class="assessment-list" id="assessment-quiz-tree">
+                <!-- Programmatically populated -->
+              </div>
+            </div>
+            
+            <!-- Assessment Work Area -->
+            <div class="assessment-work-area" id="quiz-work-area">
+              <!-- Default State (No Quiz Active) -->
+              <div class="empty-state" id="quiz-empty-state">
+                <div class="empty-icon">📝</div>
+                <h2>Ready for Evaluation?</h2>
+                <p>Choose an assessment from the left panel. Each quiz is aligned with Tamil Nadu Board exam patterns, helping you prepare for key grading criteria.</p>
+              </div>
+              
+              <!-- Active Quiz Panel (Hidden by default) -->
+              <div class="active-quiz-panel" id="quiz-active-panel" style="display: none;">
+                <div class="quiz-header">
+                  <div>
+                    <h3 id="quiz-title">Mathematics Unit Test</h3>
+                    <p id="quiz-progress-label">Question 1 of 5</p>
+                  </div>
+                  <div class="quiz-timer" id="quiz-timer-label">00:00</div>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="progress-bar-container quiz-progress">
+                  <div class="progress-bar-fill" id="quiz-progress-bar" style="width: 20%;"></div>
+                </div>
+                
+                <!-- Question Card -->
+                <div class="question-card">
+                  <p class="question-text" id="quiz-question-text">Which formula gives the nth term of an arithmetic progression?</p>
+                  
+                  <div class="options-container" id="quiz-options-container">
+                    <!-- Dynamic buttons -->
+                  </div>
+                </div>
+                
+                <!-- Action / Review panel -->
+                <div class="quiz-feedback-panel" id="quiz-feedback-panel" style="display: none;">
+                  <div class="feedback-status" id="quiz-feedback-status">
+                    <span class="status-icon">✅</span>
+                    <span class="status-text">Correct!</span>
+                  </div>
+                  <p class="feedback-explanation" id="quiz-feedback-explanation">For an arithmetic progression, the nth term is a_n = a + (n - 1)d.</p>
+                  <button class="primary-btn" id="quiz-next-btn">Next Question</button>
+                </div>
+              </div>
+              
+              <!-- Quiz Results Panel (Hidden by default) -->
+              <div class="quiz-results-panel" id="quiz-results-panel" style="display: none;">
+                <div class="result-celebration">🎉</div>
+                <h2>Assessment Complete!</h2>
+                <h3 id="result-score-label">You scored 4 out of 5 (80%)</h3>
+                <p id="result-feedback-text">Excellent job! You have demonstrated good comprehension of this unit.</p>
+                
+                <div class="rewards-earned">
+                  <div class="reward-pill">+80 XP</div>
+                  <div class="reward-pill">+10 Mastery Points</div>
+                </div>
+
+                <div class="result-breakdown" id="result-breakdown"></div>
+                
+                <div class="results-actions">
+                  <button class="primary-btn" id="result-retry-btn">Try Again</button>
+                  <button class="secondary-btn" id="result-close-btn">Return to Dashboard</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        
+        <!-- VIEW: BILINGUAL AID (GLOSSARY) -->
+        <section id="view-glossary" class="view-panel">
+          <div class="glossary-container">
+            <div class="glossary-header">
+              <h2>Syllabus Vocabulary & Translation</h2>
+              <p>Translating Mathematics terminology between English and Tamil for Samacheer Kalvi success.</p>
+              
+              <div class="search-bar-wrapper">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="glossary-search" placeholder="Search a term in English or Tamil (e.g., Function, Algebra, Probability)...">
+              </div>
+            </div>
+            
+            <!-- Category and Letter Navigation -->
+            <div class="glossary-nav">
+              <div class="category-filters">
+                <button class="filter-chip active" data-category="all">All Terms</button>
+                <button class="filter-chip" data-category="maths">Mathematics</button>
+              </div>
+            </div>
+            
+            <!-- Glossary Results -->
+            <div class="glossary-grid" id="glossary-results-grid">
+              <!-- Dynamically populated cards -->
+            </div>
+          </div>
+        </section>
+        
+      </div>
+    </main>
+  </div>
+  
+  <!-- Core App Controller & Modules -->
+  <script type="module" src="/scripts/app.js"></script>
+</body>
+</html>
