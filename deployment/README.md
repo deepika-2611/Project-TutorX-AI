@@ -41,7 +41,7 @@ sudo ufw reload
 Create or update `deployment/.env` on the server:
 
 ```env
-DOMAIN=tutorx-ai.ddns.net
+DOMAIN=ai-tutorx.ddns.net
 DATABASE_URL=postgresql://USER:PASSWORD@HOST/DB?sslmode=require
 PGSSL=true
 LLM_PROVIDER=deepseek
@@ -66,13 +66,13 @@ Cannot issue for "ec2-...compute.amazonaws.com": forbidden by policy
 For HTTPS on port `443`, use your mapped domain:
 
 ```env
-DOMAIN=tutorx-ai.ddns.net
+DOMAIN=ai-tutorx.ddns.net
 ```
 
 Make sure the DNS record points to your EC2 public IP:
 
 ```text
-A record: tutorx-ai.ddns.net -> your EC2 public IP
+A record: ai-tutorx.ddns.net -> your EC2 public IP
 ```
 
 Caddy still exposes port `80` because Let's Encrypt may use it for certificate validation and Caddy redirects HTTP traffic to HTTPS automatically. The application should be accessed using HTTPS.
@@ -89,7 +89,7 @@ docker compose up -d
 Open:
 
 ```text
-https://tutorx-ai.ddns.net
+https://ai-tutorx.ddns.net
 ```
 
 ## Useful Commands
@@ -179,7 +179,7 @@ DEPLOY_HOST=16.170.172.27
 DEPLOY_USER=ubuntu
 DEPLOY_PORT=22
 DEPLOY_PATH=/opt/tutorx-ai
-DOMAIN=tutorx-ai.ddns.net
+DOMAIN=ai-tutorx.ddns.net
 LLM_PROVIDER=deepseek
 DEEPSEEK_MODEL=deepseek-v4-flash
 DEEPSEEK_THINKING=disabled
@@ -191,7 +191,7 @@ GEMINI_MODEL=gemini-2.0-flash
 The Docker image pushed for each merge will look like:
 
 ```text
-deepika2611/tutorx-ai:v123
+deepika2611/project-tutorx-ai:v123
 ```
 
 The number comes from the GitHub Actions run number, so it increments automatically for every workflow run.
@@ -205,5 +205,5 @@ service "app" has neither an image nor a build context specified
 it means `APP_IMAGE` was empty on the server. The workflow writes it automatically as:
 
 ```text
-APP_IMAGE=deepika2611/tutorx-ai:v<GITHUB_RUN_NUMBER>
+APP_IMAGE=deepika2611/project-tutorx-ai:v<GITHUB_RUN_NUMBER>
 ```

@@ -1,0 +1,125 @@
+name: Main CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+env:
+  IMAGE_NAME: deepika2611/project-tutorx-ai
+  IMAGE_TAG: v${{ github.run_number }}
+
+jobs:
+  ci:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      # - name: Build Docker image
+      #   run: docker build -f deployment/Dockerfile -t tutorx-ai:ci .
+
+  publish:
+    name: Publish Docker Image
+    needs: ci
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Login to Docker registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deployment/Dockerfile
+          push: true
+          tags: |
+            ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+
+  deploy:
+    name: Deploy to Ubuntu
+    needs: publish
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout deployment files
+        uses: actions/checkout@v4
+
+      - name: Prepare deploy directory
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_PORT || 22 }}
+          script: mkdir -p "${{ secrets.DEPLOY_PATH }}"
+
+      - name: Copy deployment files to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_PORT || 22 }}
+          source: "deployment/docker-compose.yml,deployment/Caddyfile"
+          target: "${{ secrets.DEPLOY_PATH }}"
+          strip_components: 1
+
+      - name: Deploy latest image
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_PORT || 22 }}
+          script: |
+            set -eu
+            mkdir -p "${{ secrets.DEPLOY_PATH }}"
+            cd "${{ secrets.DEPLOY_PATH }}"
+
+            cat > .env <<'ENVEOF'
+            APP_IMAGE=${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+            DOMAIN=${{ secrets.DOMAIN }}
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
+            PGSSL=true
+            LLM_PROVIDER=${{ secrets.LLM_PROVIDER }}
+            DEEPSEEK_API_KEY=${{ secrets.DEEPSEEK_API_KEY }}
+            DEEPSEEK_MODEL=${{ secrets.DEEPSEEK_MODEL }}
+            DEEPSEEK_THINKING=${{ secrets.DEEPSEEK_THINKING }}
+            GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+            GEMINI_MODEL=${{ secrets.GEMINI_MODEL }}
+            MATH_BOOK_PDF=/app/data/textbooks/Class_10_Mathematics_English_2025_Edition-www.tntextbooks.in.pdf
+            PORT=8787
+            SESSION_SECRET=${{ secrets.SESSION_SECRET }}
+            ENVEOF
+
+            echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+            docker compose pull app
+            docker compose up -d --no-build
+            docker image prune -f
